@@ -46,6 +46,18 @@ public abstract class vNode
             agent.increaseStage();
         }
     }
-    
+    public void infected(){
+        int numbofinfected=0;
+        double infectionrad=0;
+        for (int i = 0; i < inhabitants.size(); i++) {
+            Agent person = inhabitants.get(i);
+            if(person.isInfected()){
+                numbofinfected+=1;
+                infectionrad=person.infectionRadios();
+            }
+            
+        }
+        
+    }
    
 }

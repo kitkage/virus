@@ -74,6 +74,9 @@ public class Agent
     {
         return infected;
     }
+    public Virus infection(){
+        return virus;
+    }
     public void increaseStage()
     {
         if (infected) 
@@ -102,7 +105,12 @@ public class Agent
     {
         return virus.agentDeath(this);
     }
-    
+    public double infectionRadios(){
+            if (infected) {
+                return virus.infectionArea(stage);
+            }
+            return 0;
+        }
     private class nodeQueue
     {
         private ArrayList<vNode> theQueue; 
@@ -133,5 +141,6 @@ public class Agent
         {
             return theQueue; 
         }
+        
     }
 }

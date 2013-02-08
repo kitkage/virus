@@ -14,7 +14,8 @@ public abstract class Virus
     
     public abstract float stageApperence(int Stage);
     
-    public abstract void spreadInfection(vNode location);
     
     public abstract boolean agentDeath(Agent agent);
+    
+    public abstract  double infectionArea(int stage);
 }
