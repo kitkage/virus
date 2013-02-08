@@ -13,7 +13,7 @@ import java.util.ArrayList;
 public abstract class location {
     
     ArrayList<vNode> nodes;
-    int startingAgents;
+    int numStartingAgents;
     
     public abstract void update();
     public abstract double deadPercent();

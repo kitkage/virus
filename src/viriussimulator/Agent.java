@@ -9,6 +9,7 @@ package viriussimulator;
  * @author baroba
  */
 import java.util.ArrayList; 
+import java.util.Queue; 
 public class Agent 
 {
     vNode location; 
