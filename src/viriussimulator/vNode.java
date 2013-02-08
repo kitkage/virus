@@ -8,7 +8,7 @@ import java.util.ArrayList;
  *
  * @author baroba
  */
-public abstract class vNode 
+public abstract class vNode
 {
     public ArrayList<vNode> connections; 
     public ArrayList<Agent> inhabitants; 
@@ -46,4 +46,6 @@ public abstract class vNode
             agent.increaseStage();
         }
     }
+    
+   
 }

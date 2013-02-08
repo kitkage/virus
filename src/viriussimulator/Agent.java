@@ -9,7 +9,6 @@ package viriussimulator;
  * @author baroba
  */
 import java.util.ArrayList; 
-import java.util.Queue; 
 public class Agent 
 {
     vNode location; 
@@ -34,9 +33,36 @@ public class Agent
     }
     
     
-    public void findRoute(vNode v)
+    public ArrayList<vNode> findRoute(vNode v)
     {
-        
+        nodeQueue nVisited = new nodeQueue();
+        ArrayList<vNode> visited = new ArrayList(); 
+        boolean found = false;
+        vNode current = location;
+        nVisited.push(current);
+        while (!found)
+        {
+            current = nVisited.pull(); 
+            if (current.name.equals(v.name))
+            {
+                return nVisited.toArrayList(); 
+            }
+            else 
+            {
+                visited.add(current);
+                for (int i = 0; i < current.connections.size(); i++)
+                {
+                    vNode c = current.connections.get(i);
+                    if (!visited.contains(c))
+                    {
+                        nVisited.push(c);
+                    }
+                }
+                
+            }
+                
+        }
+        return null; 
     }
     public void infect(Virus vir)
     {
@@ -75,5 +101,37 @@ public class Agent
     public boolean isDead()
     {
         return virus.agentDeath(this);
+    }
+    
+    private class nodeQueue
+    {
+        private ArrayList<vNode> theQueue; 
+        
+        public nodeQueue()
+        {
+            theQueue = new ArrayList<vNode>(); 
+        }
+        
+        public void push (vNode n)
+        {
+            theQueue.add(n);
+        }
+        
+        public vNode pull()
+        {
+            vNode temp = theQueue.get(0); 
+            theQueue.remove(0);
+            return temp; 
+        }
+        
+        public boolean contains (vNode v)
+        {
+            return theQueue.contains(v); 
+        }
+        
+        public ArrayList<vNode> toArrayList()
+        {
+            return theQueue; 
+        }
     }
 }
