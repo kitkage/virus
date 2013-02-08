@@ -4,6 +4,8 @@
  */
 package viriussimulator;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author baroba
@@ -15,5 +17,11 @@ public class Control {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        location city;
+        for (int updates = 0; updates < 1000; updates++) {
+            city.update();
+        
+        }
+        city.deadPercent();
     }
 }
