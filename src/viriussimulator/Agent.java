@@ -56,6 +56,7 @@ public class Agent
                     if (!visited.contains(c))
                     {
                         nVisited.push(c);
+                        break; 
                     }
                 }
                 
