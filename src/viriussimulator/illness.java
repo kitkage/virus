@@ -19,28 +19,15 @@ public class illness extends Virus{
         return 0;
     }
 
-    @Override
-    public void spreadInfection(vNode location) {
-        ArrayList<Agent> people= location.inhabitants;
-        int numbInfected=0;
-        for (int i = 0; i < people.size(); i++) {
-            Agent person = people.get(i);
-            if(person.isInfected()){
-                numbInfected+=1;
-            }
-        }
-        for (int i = 0; i < people.size(); i++) {
-            Agent person = people.get(i);
-            if(!person.isInfected()&&Math.random()<numbInfected/people.size()){
-                person.infect(this);
-            }
-        }
-        
-    }
 
     @Override
     public boolean agentDeath(Agent agent) {
     return false;
+    }
+
+    @Override
+    public double infectionArea(int stage) {
+    return 3;    
     }
     
 }
