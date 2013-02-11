@@ -9,27 +9,102 @@ package viriussimulator;
  * @author baroba
  */
 import java.util.ArrayList; 
+import java.util.*; 
 public class Agent 
 {
     vNode location; 
-    ArrayList<vNode> route; 
+    ArrayList<vNode> route;
+    ArrayList<vNode> schedule; 
     String name; 
     boolean infected;
     int stage;
     float apearence;
     Virus virus;
     float avoidance;
+    int scheduleplace; 
     public Agent(String n, vNode start)
     {
         name = n; 
         location = start; 
         route = new ArrayList<vNode>(); 
+        schedule = new ArrayList<vNode>(); 
+        schedule = generateSchedule(); 
     }
     
+    public void update()
+    {
+        if (location.name.equals(route.get(0).name) && schedule.contains(location))
+        {
+            scheduleplace++; 
+            if (scheduleplace > schedule.size())
+            {
+                scheduleplace = 0; 
+            }
+            if (!schedule.get(scheduleplace).name.equals(location.name))
+            {
+                route = this.findRoute(schedule.get(scheduleplace)); 
+                vNode next = route.get(0); 
+                route.remove(0); 
+                changeLocation(next); 
+                return; 
+            }
+            
+        
+        }
+        
+        
+        vNode next = route.get(0); 
+        changeLocation(next); 
+        
+    }
     public boolean changeLocation(vNode v)
     {
         if (!location.connections.contains(v)) return false; 
         return location.inhabitantExits(this, v); 
+    }
+    
+    private ArrayList<vNode> generateSchedule()
+    {
+        ArrayList<vNode> s = new ArrayList<vNode>(); 
+        ArrayList<vNode> map = generateMap(); 
+        Random num = new Random(); 
+        scheduleplace = num.nextInt(10); 
+        for (int i = 0; i < scheduleplace; i++)
+        {
+            int next = num.nextInt(map.size()); 
+            for (int x = 0; x < 4; x ++)
+            {
+                s.add(map.get(next));
+            }
+        }
+        return s; 
+    }
+    
+    private ArrayList<vNode> generateMap()
+    {
+        boolean all = false; 
+        nodeQueue nVisited = new nodeQueue(); 
+        nVisited.push(location);
+        ArrayList<vNode> map = new ArrayList<vNode>(); 
+        while (!all)
+        {
+          vNode current = nVisited.pull(); 
+          map.add(current);
+          for (int i = 0; i < current.connections.size(); i++)
+          {
+              vNode c = current.connections.get(i);
+              if (!map.contains(c))
+              {
+                  nVisited.push(c);
+              }
+          }
+          
+          if (nVisited.isEmpty()) all = true; 
+          
+            
+        }
+        
+        return map; 
     }
     
     
@@ -42,7 +117,7 @@ public class Agent
         nVisited.push(current);
         while (!found)
         {
-            current = nVisited.pull(); 
+             
             if (current.name.equals(v.name))
             {
                 return nVisited.toArrayList(); 
@@ -56,6 +131,7 @@ public class Agent
                     if (!visited.contains(c))
                     {
                         nVisited.push(c);
+                        current = nVisited.pull();
                         break; 
                     }
                 }
@@ -143,5 +219,13 @@ public class Agent
             return theQueue; 
         }
         
+        public boolean isEmpty()
+        {
+            return theQueue.isEmpty(); 
+        }
+        
     }
+    
+    
+
 }
