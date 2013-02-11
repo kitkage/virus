@@ -32,7 +32,12 @@ public class City extends location
     };
     public  double deadPercent()
     {
-        return 0; 
+        int living=0;
+        for (int i = 0; i < nodes.size(); i++) {
+            vNode node = nodes.get(i);
+            living+=node.inhabitants.size();
+        }
+        return living/numStartingAgents; 
     };
     
 }
