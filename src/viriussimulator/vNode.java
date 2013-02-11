@@ -18,6 +18,7 @@ public abstract class vNode
     public abstract void inhabitantEnters(Agent a); 
     
     public abstract boolean inhabitantExits(Agent a, vNode v); 
+    public abstract boolean addConnection(vNode v);
     
     public void avoidance()
     {
