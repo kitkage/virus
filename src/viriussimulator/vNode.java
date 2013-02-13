@@ -14,11 +14,16 @@ public abstract class vNode
     public ArrayList<Agent> inhabitants; 
     public double size; 
     public String name; 
-    
+    public ArrayList<vNode> map; 
     public abstract void inhabitantEnters(Agent a); 
     
     public abstract boolean inhabitantExits(Agent a, vNode v); 
     public abstract boolean addConnection(vNode v);
+    
+    public ArrayList<vNode> getMap()
+    {
+        return map; 
+    }
     
     public void avoidance()
     {
@@ -59,6 +64,33 @@ public abstract class vNode
             
         }
         
+    }
+    
+    private ArrayList<vNode> generateMap()
+    {
+        boolean all = false; 
+        nodeQueue nVisited = new nodeQueue(); 
+        nVisited.push(this);
+        ArrayList<vNode> map = new ArrayList<vNode>(); 
+        while (!all)
+        {
+          vNode current = nVisited.pull(); 
+          map.add(current);
+          for (int i = 0; i < current.connections.size(); i++)
+          {
+              vNode c = current.connections.get(i);
+              if (!map.contains(c))
+              {
+                  nVisited.push(c);
+              }
+          }
+          
+          if (nVisited.isEmpty()) all = true; 
+          
+            
+        }
+        
+        return map; 
     }
    
 }

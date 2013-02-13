@@ -66,7 +66,7 @@ public class Agent
     private ArrayList<vNode> generateSchedule()
     {
         ArrayList<vNode> s = new ArrayList<vNode>(); 
-        ArrayList<vNode> map = generateMap(); 
+        ArrayList<vNode> map = location.getMap();
         Random num = new Random(); 
         scheduleplace = num.nextInt(10); 
         for (int i = 0; i < scheduleplace; i++)
@@ -80,32 +80,7 @@ public class Agent
         return s; 
     }
     
-    private ArrayList<vNode> generateMap()
-    {
-        boolean all = false; 
-        nodeQueue nVisited = new nodeQueue(); 
-        nVisited.push(location);
-        ArrayList<vNode> map = new ArrayList<vNode>(); 
-        while (!all)
-        {
-          vNode current = nVisited.pull(); 
-          map.add(current);
-          for (int i = 0; i < current.connections.size(); i++)
-          {
-              vNode c = current.connections.get(i);
-              if (!map.contains(c))
-              {
-                  nVisited.push(c);
-              }
-          }
-          
-          if (nVisited.isEmpty()) all = true; 
-          
-            
-        }
-        
-        return map; 
-    }
+    
     
     
     public ArrayList<vNode> findRoute(vNode v)
@@ -182,49 +157,14 @@ public class Agent
     {
         return virus.agentDeath(this);
     }
-    public double infectionRadios(){
+    public double infectionRadios()
+    {
             if (infected) {
                 return virus.infectionArea(stage);
             }
             return 0;
-        }
-    private class nodeQueue
-    {
-        private ArrayList<vNode> theQueue; 
-        
-        public nodeQueue()
-        {
-            theQueue = new ArrayList<vNode>(); 
-        }
-        
-        public void push (vNode n)
-        {
-            theQueue.add(n);
-        }
-        
-        public vNode pull()
-        {
-            vNode temp = theQueue.get(0); 
-            theQueue.remove(0);
-            return temp; 
-        }
-        
-        public boolean contains (vNode v)
-        {
-            return theQueue.contains(v); 
-        }
-        
-        public ArrayList<vNode> toArrayList()
-        {
-            return theQueue; 
-        }
-        
-        public boolean isEmpty()
-        {
-            return theQueue.isEmpty(); 
-        }
-        
     }
+    
     
     
 
