@@ -32,6 +32,12 @@ public class City extends location
     }
     public  void update()
     {
+        for (int i = 0; i < nodes.size(); i++) {
+            vNode node = nodes.get(i);
+            node.avoidance();
+            node.updateStage();
+            node.update();
+        }
         
         for (int i = 0; i < nodes.size(); i++) {
             vNode node = nodes.get(i);

@@ -53,16 +53,33 @@ public abstract class vNode
         }
     }
     public void infected(){
-        int numbofinfected=0;
-        double infectionrad=0;
+        ArrayList<Agent> infected=new ArrayList<>();
         for (int i = 0; i < inhabitants.size(); i++) {
             Agent person = inhabitants.get(i);
             if(person.isInfected()){
-                numbofinfected+=1;
-                infectionrad=person.infectionRadios();
+                infected.add(person);
             }
             
         }
+        for (int i = 0; i < inhabitants.size(); i++) {
+            Agent agent = inhabitants.get(i);
+            if (!agent.isInfected()) 
+            {
+                double agentinfec=0;
+                for (int j = 0; j < infected.size(); j++) 
+                {
+                    Agent infec = infected.get(j);
+                    if (!agent.avoid(infec)) {
+                        agentinfec+=infec.infectionRadios();
+                    }
+                }
+                if (Math.random()>agentinfec/this.size) {
+                    agent.infect(infected.get(0).virus);
+                }
+            }
+            
+        }
+        
         
     }
     
@@ -107,6 +124,13 @@ public abstract class vNode
     public void setMap(ArrayList mapin)
     {
         this.map=mapin;
+    }
+    public void update()
+    {
+        for (int i = 0; i < inhabitants.size(); i++) {
+            Agent agent = inhabitants.get(i);
+            agent.update();
+        }
     }
     
 }
