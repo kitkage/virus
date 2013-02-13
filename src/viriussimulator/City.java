@@ -13,7 +13,7 @@ public class City extends location
 {
     public City (int numAgents)
     {
-     nodes = new ArrayList<vNode>(); 
+     nodes = new ArrayList<>(); 
      numStartingAgents = numAgents; 
      nodes.add(new streetNode("route 1", 0));
      nodes.add(new buildingNode("building 1", numAgents/4));
