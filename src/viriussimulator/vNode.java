@@ -93,4 +93,20 @@ public abstract class vNode
         return map; 
     }
    
+    public String readOut(){
+        double infected=0.0;
+        for (int i = 0; i < inhabitants.size(); i++) {
+            Agent agent = inhabitants.get(i);
+            if (agent.isInfected()) {
+                infected+=1;
+            }
+        }
+        return name+" has "+inhabitants.size()+" inhabitants "+infected/inhabitants.size()+"% infected/n";
+    }
+    
+    public void setMap(ArrayList mapin)
+    {
+        this.map=mapin;
+    }
+    
 }

@@ -25,9 +25,18 @@ public class City extends location
         nodes.get(0).addConnection(nodes.get(i));
 
       }
+        for (int i = 0; i < nodes.size(); i++) {
+            vNode node = nodes.get(i);
+            node.setMap(nodes);
+        }
     }
     public  void update()
     {
+        
+        for (int i = 0; i < nodes.size(); i++) {
+            vNode node = nodes.get(i);
+            System.out.print(node.readOut());
+        }
         
     };
     public  double deadPercent()
