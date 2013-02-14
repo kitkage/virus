@@ -20,7 +20,7 @@ public class Agent
     int stage;
     double apearence;
     Virus virus;
-    double avoidance=.9;
+    double avoidance=0.9;
     int scheduleplace; 
     public Agent(String n, vNode start)
     {
@@ -140,6 +140,7 @@ public class Agent
     
     public void infect(Virus vir)
     {
+        System.out.println("new infection");
         infected=true;
         stage=1;
         virus=vir;

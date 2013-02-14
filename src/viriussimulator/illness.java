@@ -27,7 +27,7 @@ public class illness extends Virus{
 
     @Override
     public double infectionArea(int stage) {
-    return 3;    
+    return 10;    
     }
     
 }

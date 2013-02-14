@@ -17,10 +17,10 @@ public class City extends location
      nodes = new ArrayList<vNode>(); 
      numStartingAgents = numAgents; 
      nodes.add(new streetNode("route 1", 0));
-     nodes.add(new buildingNode("building 1", numAgents/4, 1));
-     nodes.add(new buildingNode("building 2", numAgents/4, 0));
-     nodes.add(new buildingNode("building 3", numAgents/4, 0));
-     nodes.add(new buildingNode("building 4", numAgents/4, 0));
+     nodes.add(new buildingNode("building 1", numAgents/4, 10));
+     nodes.add(new buildingNode("building 2", numAgents/4, 10));
+     nodes.add(new buildingNode("building 3", numAgents/4, 10));
+     nodes.add(new buildingNode("building 4", numAgents/4, 10));
      System.out.println("Adding connections"); 
      for (int i = 1; i < 5; i++) 
      {
@@ -37,13 +37,16 @@ public class City extends location
             nodes.get(i).setMap(nodes);
         }
      for (int i = 0; i < nodes.size(); i++) nodes.get(i).createAgents();
+     nodes.get(4).inhabitants.get(0).infect(new illness());
     }
     public  void update()
     {
         for (int i = 0; i < nodes.size(); i++) {
             vNode node = nodes.get(i);
+            node.infected();
             node.avoidance();
             node.updateStage();
+
             node.update();
         }
         

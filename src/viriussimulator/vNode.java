@@ -81,7 +81,7 @@ public abstract class vNode
                         agentinfec+=infec.infectionRadios();
                     }
                 }
-                if (Math.random()>agentinfec/this.size) {
+                if (Math.random()>agentinfec/this.size&&infected.size()>0) {
                     agent.infect(infected.get(0).virus);
                 }
             }
@@ -128,7 +128,12 @@ public abstract class vNode
                 infected+=1;
             }
         }
-        return name+" has "+inhabitants.size()+" inhabitants "+infected/inhabitants.size()+"% infected/n";
+        double percent=0;
+        if (inhabitants.size()>0) {
+            percent=infected/inhabitants.size()*100;
+        }
+        
+        return name+" has "+inhabitants.size()+" inhabitants "+percent+"% infected";
     }
     
     
