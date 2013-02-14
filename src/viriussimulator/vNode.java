@@ -22,6 +22,9 @@ public abstract class vNode
     public abstract void createAgents();
     public ArrayList<vNode> getMap()
     {
+        if (map==null) {
+            generateMap();
+        }
         return map; 
     }
     public void setMap(ArrayList<vNode> m)
