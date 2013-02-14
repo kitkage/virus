@@ -12,7 +12,7 @@ public abstract class Virus
 {
     public double infection;
     
-    public abstract float stageApperence(int Stage);
+    public abstract double stageApperence(int Stage);
     
     
     public abstract boolean agentDeath(Agent agent);

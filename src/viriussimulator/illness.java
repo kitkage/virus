@@ -15,8 +15,8 @@ import java.util.Random;
 public class illness extends Virus{
 
     @Override
-    public float stageApperence(int Stage) {
-        return 0;
+    public double stageApperence(int Stage) {
+        return 1;
     }
 
 

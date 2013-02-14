@@ -69,11 +69,15 @@ public abstract class vNode
             }
             
         }
+        if(infected.size()>0)
+        {
+            
         for (int i = 0; i < inhabitants.size(); i++) {
             Agent agent = inhabitants.get(i);
             if (!agent.isInfected()) 
             {
-                double agentinfec=0;
+
+                double agentinfec=0.0;
                 for (int j = 0; j < infected.size(); j++) 
                 {
                     Agent infec = infected.get(j);
@@ -81,14 +85,15 @@ public abstract class vNode
                         agentinfec+=infec.infectionRadios();
                     }
                 }
-                if (Math.random()>agentinfec/this.size&&infected.size()>0) {
+                if (Math.random()<agentinfec/this.size) {
+                    
                     agent.infect(infected.get(0).virus);
                 }
             }
             
         }
         
-        
+        }
     }
     
     private ArrayList<vNode> generateMap()
