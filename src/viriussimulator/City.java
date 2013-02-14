@@ -30,10 +30,10 @@ public class City extends location
      }
      System.out.println("StreetConnection size is: " + nodes.get(0).connections.size()); 
      
-     ArrayList<vNode> map = nodes.get(0).getMap(); 
+      
      for (int i = 0; i < nodes.size(); i++) 
         {
-            nodes.get(i).setMap(map);
+            nodes.get(i).setMap(nodes);
         }
      for (int i = 0; i < nodes.size(); i++) nodes.get(i).createAgents();
     }

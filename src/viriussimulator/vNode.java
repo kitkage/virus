@@ -14,7 +14,7 @@ public abstract class vNode
     public ArrayList<Agent> inhabitants; 
     public double size; 
     public String name; 
-    public ArrayList<vNode> map; 
+    public ArrayList<vNode> map = new ArrayList<vNode>(); 
     public abstract void inhabitantEnters(Agent a); 
     
     public abstract boolean inhabitantExits(Agent a, vNode v); 
@@ -22,7 +22,8 @@ public abstract class vNode
     public abstract void createAgents();
     public ArrayList<vNode> getMap()
     {
-        if (map==null) {
+        if (map.isEmpty()) 
+        {
             generateMap();
         }
         return map; 
@@ -92,7 +93,6 @@ public abstract class vNode
     
     private ArrayList<vNode> generateMap()
     {
-        System.out.println("Generating Map"); 
         boolean all = false; 
         nodeQueue nVisited = new nodeQueue(); 
         nVisited.push(this);
@@ -101,10 +101,10 @@ public abstract class vNode
         {
           vNode current = nVisited.pull(); 
           map.add(current);
-          System.out.println("Connections size is: " + current.connections.size()); 
+          
           for (int i = 0; i < current.connections.size(); i++)
           {
-              System.out.println("i is: " + i); 
+              
               vNode c = current.connections.get(i);
               if (!map.contains(c))
               {
@@ -116,8 +116,7 @@ public abstract class vNode
           
             
         }
-        System.out.println("Map created.  Map is: " + map.toString());
-        System.out.println("Map sise is: " + map.size()); 
+        
         return map; 
     }
    
