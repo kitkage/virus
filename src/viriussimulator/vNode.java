@@ -19,12 +19,15 @@ public abstract class vNode
     
     public abstract boolean inhabitantExits(Agent a, vNode v); 
     public abstract boolean addConnection(vNode v);
-    
+    public abstract void createAgents();
     public ArrayList<vNode> getMap()
     {
         return map; 
     }
-    
+    public void setMap(ArrayList<vNode> m)
+    {
+        map = m; 
+    }
     public void avoidance()
     {
         for (int i = 0; i < inhabitants.size(); i++) {
@@ -52,7 +55,8 @@ public abstract class vNode
             agent.increaseStage();
         }
     }
-    public void infected(){
+    public void infected()
+    {
         ArrayList<Agent> infected=new ArrayList<>();
         for (int i = 0; i < inhabitants.size(); i++) {
             Agent person = inhabitants.get(i);
@@ -85,6 +89,7 @@ public abstract class vNode
     
     private ArrayList<vNode> generateMap()
     {
+        System.out.println("Generating Map"); 
         boolean all = false; 
         nodeQueue nVisited = new nodeQueue(); 
         nVisited.push(this);
@@ -93,8 +98,10 @@ public abstract class vNode
         {
           vNode current = nVisited.pull(); 
           map.add(current);
+          System.out.println("Connections size is: " + current.connections.size()); 
           for (int i = 0; i < current.connections.size(); i++)
           {
+              System.out.println("i is: " + i); 
               vNode c = current.connections.get(i);
               if (!map.contains(c))
               {
@@ -106,7 +113,8 @@ public abstract class vNode
           
             
         }
-        
+        System.out.println("Map created.  Map is: " + map.toString());
+        System.out.println("Map sise is: " + map.size()); 
         return map; 
     }
    
@@ -121,10 +129,7 @@ public abstract class vNode
         return name+" has "+inhabitants.size()+" inhabitants "+infected/inhabitants.size()+"% infected/n";
     }
     
-    public void setMap(ArrayList mapin)
-    {
-        this.map=mapin;
-    }
+    
     public void update()
     {
         for (int i = 0; i < inhabitants.size(); i++) {
@@ -133,4 +138,5 @@ public abstract class vNode
         }
     }
     
+     
 }

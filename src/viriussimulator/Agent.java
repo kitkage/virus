@@ -65,8 +65,10 @@ public class Agent
     
     private ArrayList<vNode> generateSchedule()
     {
+         
         ArrayList<vNode> s = new ArrayList<vNode>(); 
         ArrayList<vNode> map = location.getMap();
+        System.out.println("Map size is: " + map.size());
         Random num = new Random(); 
         scheduleplace = num.nextInt(10); 
         for (int i = 0; i < scheduleplace; i++)

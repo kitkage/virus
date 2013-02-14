@@ -17,7 +17,7 @@ public class Control {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        City city = new City(0);
+        City city = new City(10);
         for (int updates = 0; updates < 1000; updates++)
         {
             city.update();

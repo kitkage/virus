@@ -4,25 +4,32 @@
  */
 package viriussimulator;
 import java.util.ArrayList;
+import java.util.*; 
 /**
  *
  * @author baroba
  */
 public class buildingNode extends vNode
 { 
-    public buildingNode(String n, double s)
+    
+    private int numAgents; 
+    public buildingNode(String n, double area, int numAgent)
     {
         name = n; 
-        size = s;
+        size = area;
         connections = new ArrayList<vNode>();
         inhabitants = new ArrayList<Agent>();
+        numAgents = numAgent; 
     }
+        
+    
     
     
     public boolean addConnection(vNode v)
     {
         if (connections.contains(v)) return false; 
         connections.add(v);
+        v.addConnection(this);
         return true; 
     }
     
@@ -51,6 +58,17 @@ public class buildingNode extends vNode
         }
         
         return false; 
+    }
+    
+    public void createAgents()
+    {
+          for (int x = 0; x <numAgents; x++)
+        {
+            Random id = new Random(); 
+            Integer i = id.nextInt(100000000);
+            Agent a = new Agent(i.toString() , this); 
+            inhabitants.add(a);
+        }
     }
     
 }

@@ -23,6 +23,7 @@ public class streetNode extends vNode
     {
         if (connections.contains(v)) return false; 
         connections.add(v);
+        v.addConnection(this);
         return true; 
     }
     
@@ -53,5 +54,10 @@ public class streetNode extends vNode
         }
         
         return false; 
+    }
+    
+    public void createAgents()
+    {
+        
     }
 }
