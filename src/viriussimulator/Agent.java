@@ -33,6 +33,10 @@ public class Agent
     
     public void update()
     {
+        if (route.isEmpty())
+        {
+            route = this.findRoute(schedule.get(scheduleplace)); 
+        }
         if (location.name.equals(route.get(0).name) && schedule.contains(location))
         {
             scheduleplace++; 
@@ -68,9 +72,9 @@ public class Agent
          
         ArrayList<vNode> s = new ArrayList<vNode>(); 
         ArrayList<vNode> map = location.getMap();
-        System.out.println("Map size is: " + map.size());
+        
         Random num = new Random(); 
-        scheduleplace = num.nextInt(10); 
+        scheduleplace = num.nextInt(10) + 1; 
         for (int i = 0; i < scheduleplace; i++)
         {
             int next = num.nextInt(map.size()); 
@@ -87,14 +91,17 @@ public class Agent
     
     public ArrayList<vNode> findRoute(vNode v)
     {
+      
         nodeQueue nVisited = new nodeQueue();
         ArrayList<vNode> visited = new ArrayList(); 
         boolean found = false;
         vNode current = location;
         nVisited.push(current);
+        int count = 0; 
         while (!found)
         {
-             
+            //System.out.println("Count is: " + count); 
+            //count++; 
             if (current.name.equals(v.name))
             {
                 return nVisited.toArrayList(); 
@@ -108,8 +115,7 @@ public class Agent
                     if (!visited.contains(c))
                     {
                         nVisited.push(c);
-                        current = nVisited.pull();
-                        break; 
+                        
                     }
                 }
                 
