@@ -91,39 +91,42 @@ public class Agent
     
     public ArrayList<vNode> findRoute(vNode v)
     {
-      
-        nodeQueue nVisited = new nodeQueue();
-        ArrayList<vNode> visited = new ArrayList(); 
-        boolean found = false;
-        vNode current = location;
-        nVisited.push(current);
-        int count = 0; 
-        while (!found)
-        {
-            //System.out.println("Count is: " + count); 
-            //count++; 
-            if (current.name.equals(v.name))
-            {
-                return nVisited.toArrayList(); 
-            }
-            else 
-            {
-                visited.add(current);
-                for (int i = 0; i < current.connections.size(); i++)
-                {
-                    vNode c = current.connections.get(i);
-                    if (!visited.contains(c))
-                    {
-                        nVisited.push(c);
-                        
-                    }
-                }
-                
-            }
-                
-        }
-        return null; 
+        
+        nodeQueue route = new nodeQueue(); 
+        route.push(location); 
+        return DFS (v, location, route, new nodeQueue()); 
     }
+    
+    private ArrayList<vNode> DFS (vNode v, vNode current, nodeQueue route, nodeQueue explored)
+    {
+        if (current.name.equals(v.name))
+        {
+            return route.toArrayList(); 
+        }
+        else 
+        {
+            explored.push(current);
+            for (int i = 0; i < current.connections.size(); i++)
+            {
+                if(!explored.contains(current.connections.get(i)))
+                {
+                    nodeQueue temp = route; 
+                    temp.push(current.connections.get(i));
+                    ArrayList<vNode> further = new ArrayList<vNode>();  
+                    further = DFS(v, current.connections.get(i), temp, explored);
+                    
+                    if (!further.isEmpty())
+                    {
+                        return further; 
+                    }
+                    
+                }
+            }
+        }
+        
+        return new ArrayList<vNode>(); 
+    }
+    
     public void infect(Virus vir)
     {
         infected=true;
