@@ -18,9 +18,9 @@ public class Agent
     String name; 
     boolean infected;
     int stage;
-    float apearence;
+    double apearence;
     Virus virus;
-    float avoidance;
+    double avoidance=.9;
     int scheduleplace; 
     public Agent(String n, vNode start)
     {
@@ -139,7 +139,7 @@ public class Agent
         }
         
     }
-    public float getApperance()
+    public double getApperance()
     {
         return apearence;
     }
@@ -150,9 +150,13 @@ public class Agent
         }
         return false;
     }
-    public void updateApperance(float avoidingPercent)
+    public void updateApperance(double avoidingPercent)
     {
-        apearence=virus.stageApperence(stage)-avoidingPercent;
+        if (infected) 
+        {
+            apearence=virus.stageApperence(stage)-avoidingPercent;
+         
+        }
     }
     
     public boolean isDead()

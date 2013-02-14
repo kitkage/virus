@@ -36,8 +36,8 @@ public abstract class vNode
     {
         for (int i = 0; i < inhabitants.size(); i++) {
             Agent avoidAgent = inhabitants.get(i);
-            int avoid=0;
-            for(int j=0; i<inhabitants.size();j++)
+            double avoid=0.0;
+            for(int j=0; j<inhabitants.size();j++)
             {
                 if(j!=i)
                 {
@@ -46,7 +46,7 @@ public abstract class vNode
                         avoid+=1;
                     }
                 }
-                avoidAgent.updateApperance((float) avoid/inhabitants.size());
+                avoidAgent.updateApperance(avoid/inhabitants.size());
             }
 
         }
