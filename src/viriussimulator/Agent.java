@@ -40,7 +40,7 @@ public class Agent
         if (location.name.equals(route.get(0).name) && schedule.contains(location))
         {
             scheduleplace++; 
-            if (scheduleplace > schedule.size())
+            if (scheduleplace >= schedule.size())
             {
                 scheduleplace = 0; 
             }
@@ -58,6 +58,7 @@ public class Agent
         
         
         vNode next = route.get(0); 
+        route.remove(0);
         changeLocation(next); 
         
     }
@@ -93,38 +94,48 @@ public class Agent
     {
         
         nodeQueue route = new nodeQueue(); 
-        route.push(location); 
+       // System.out.println("Finding route"); 
+        //System.out.println("Start location is: " + location.name + " and Destination is: " + v.name); 
         return DFS (v, location, route, new nodeQueue()); 
     }
     
     private ArrayList<vNode> DFS (vNode v, vNode current, nodeQueue route, nodeQueue explored)
     {
+        route.push(current);
         if (current.name.equals(v.name))
         {
             return route.toArrayList(); 
         }
+        
         else 
         {
+            
             explored.push(current);
             for (int i = 0; i < current.connections.size(); i++)
             {
                 if(!explored.contains(current.connections.get(i)))
                 {
-                    nodeQueue temp = route; 
-                    temp.push(current.connections.get(i));
+                    
                     ArrayList<vNode> further = new ArrayList<vNode>();  
-                    further = DFS(v, current.connections.get(i), temp, explored);
+                    further = DFS(v, current.connections.get(i), route, explored);
                     
                     if (!further.isEmpty())
                     {
+                        /*System.out.println("Destination is: " + v.name); 
+                        for (int x = 0; x < further.size(); x++)
+                        {
+                            System.out.println("Route step " + x + " is: " + further.get(x).name); 
+                        }*/
                         return further; 
                     }
                     
                 }
             }
+            //System.out.println("Returning empty list"); 
+            return new ArrayList<vNode>();
         }
         
-        return new ArrayList<vNode>(); 
+         
     }
     
     public void infect(Virus vir)

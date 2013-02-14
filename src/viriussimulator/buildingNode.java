@@ -29,7 +29,7 @@ public class buildingNode extends vNode
     {
         if (connections.contains(v)) return false; 
         connections.add(v);
-        v.addConnection(this);
+        
         return true; 
     }
     
@@ -54,6 +54,7 @@ public class buildingNode extends vNode
             inhabitants.remove(a);
             int x = connections.indexOf(v); 
             connections.get(x).inhabitantEnters(a);
+            a.location = connections.get(x); 
             return true; 
         }
         

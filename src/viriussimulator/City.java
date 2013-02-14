@@ -17,15 +17,16 @@ public class City extends location
      nodes = new ArrayList<vNode>(); 
      numStartingAgents = numAgents; 
      nodes.add(new streetNode("route 1", 0));
-     nodes.add(new buildingNode("building 1", numAgents/4, numAgents/4));
-     nodes.add(new buildingNode("building 2", numAgents/4, numAgents/4));
-     nodes.add(new buildingNode("building 3", numAgents/4, numAgents/4));
-     nodes.add(new buildingNode("building 4", numAgents/4, numAgents/4));
+     nodes.add(new buildingNode("building 1", numAgents/4, 1));
+     nodes.add(new buildingNode("building 2", numAgents/4, 0));
+     nodes.add(new buildingNode("building 3", numAgents/4, 0));
+     nodes.add(new buildingNode("building 4", numAgents/4, 0));
      System.out.println("Adding connections"); 
      for (int i = 1; i < 5; i++) 
      {
         nodes.get(0).addConnection(nodes.get(i));
-        //nodes.get(i).addConnection(nodes.get(0)); 
+        nodes.get(i).addConnection(nodes.get(0)); 
+        System.out.println("Number of connections is: " + nodes.get(i).connections.size()); 
 
      }
      System.out.println("StreetConnection size is: " + nodes.get(0).connections.size()); 
@@ -48,7 +49,7 @@ public class City extends location
         
         for (int i = 0; i < nodes.size(); i++) {
             vNode node = nodes.get(i);
-            System.out.print(node.readOut());
+            System.out.println(node.readOut());
         }
         
     };
