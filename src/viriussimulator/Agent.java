@@ -22,9 +22,9 @@ public class Agent extends AbstractAgent
     Virus virus;
     double avoidance=0.6;
     int scheduleplace; 
-    private int timer;
-    private boolean atspot; 
-    public double panic=.4;
+    protected int timer;
+    protected boolean atspot; 
+    public double panic=.6;
     public vNode home;
     public boolean paniced=false;
     public Agent(String n, vNode start)
