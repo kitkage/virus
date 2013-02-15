@@ -10,10 +10,15 @@ package viriussimulator;
  */
 public class zombievirus extends Virus{
      @Override
-    public double stageApperence(int Stage) {
+    public double stageApperence(int Stage) 
+     {
         return .8-(Stage/8);
     }
-
+     
+     public void setStage(int Stage)
+     {
+         
+     }
 
     @Override
     public boolean agentDeath(Agent agent) 

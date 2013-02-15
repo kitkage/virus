@@ -15,6 +15,9 @@ public class ZombieAgent extends Agent
     public ZombieAgent(String n, vNode start)
     {
         super(n, start);  
+        virus = new zombievirus();
+        stage = 10; 
+        
     }
     
     public void update()
