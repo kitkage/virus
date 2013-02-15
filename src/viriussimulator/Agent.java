@@ -97,23 +97,35 @@ public class Agent
             timer = 0;
             atspot = false; 
             this.route = this.findRoute(schedule.get(scheduleplace)); 
+            //route.remove(0);
             System.out.println("Time to move along the route: " + route.toString()); 
+            System.out.println("Connections are: " + this.location.connections.toString()); 
 
         }
         
         if (!atspot)
         {
-            if (route.get(0).name.equals(this.location.name))
+            if (route.get(0).name.equals(schedule.get(scheduleplace).name))
             {
                 System.out.println("Reached next location"); 
                 atspot = true;
-                changeLocation(route.get(0)); 
+                if(!changeLocation(route.get(0)))
+                {
+                    System.out.println("Error: Route is: " + route.toString() + " this location is: " + this.location.toString() + " and connections are: " + this.location.connections.toString()); 
+                    return; 
+                }
             }
             else 
             {
+                System.out.println("Moving"); 
                 vNode temp = route.get(0); 
                 route.remove(0); 
-                changeLocation(temp);
+                if(!changeLocation(temp))
+                {
+                    System.out.println("Error: Route is: " + route.toString() + " this location is: " + this.location.toString() + " and connections are: " + this.location.connections.toString() +  " and temp is: " + temp.toString());
+                    return; 
+                }
+                
             }
         }
         
@@ -122,7 +134,9 @@ public class Agent
      
     public boolean changeLocation(vNode v)
     {
-        if (!location.connections.contains(v)) return false; 
+        
+        if (!location.connections.contains(v)) return false;
+        
         return location.inhabitantExits(this, v); 
     }
     
