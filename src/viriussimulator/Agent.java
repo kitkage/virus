@@ -98,8 +98,8 @@ public class Agent
             timer = 0;
             atspot = false; 
             this.route = this.findRoute(schedule.get(scheduleplace)); 
-
-            if(route.size() > 1) route.remove(0);
+            if (route.size() > 1 && route.get(0).name.equals(this.location.name)) route.remove(0);
+            //if(route.size() > 1) route.remove(0);
             System.out.println("Time to move along the route: " + route.toString()); 
             System.out.println("Connections are: " + this.location.connections.toString()); 
 
