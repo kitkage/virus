@@ -35,50 +35,7 @@ public class Agent
         atspot = true; 
         scheduleplace = 0; 
     }
-    /*
-    public void update()
-    {
-        //System.out.println("In Agent update"); 
-                
-        if (route.isEmpty())
-        {
-            
-            route = this.findRoute(schedule.get(scheduleplace)); 
-        }
-        while (route.size()==0) 
-        {            
-            scheduleplace++;
-            if (scheduleplace >= schedule.size()) scheduleplace = 0; 
-            route = this.findRoute(schedule.get(scheduleplace));
-        }
-        
-
-        if (location.name.equals(route.get(0).name) && schedule.contains(location))
-        {
-            scheduleplace++; 
-            if (scheduleplace >= schedule.size())
-            {
-                scheduleplace = 0; 
-            }
-            if (!schedule.get(scheduleplace).name.equals(location.name))
-            {
-                route = this.findRoute(schedule.get(scheduleplace)); 
-                vNode next = route.get(0); 
-                route.remove(0); 
-                changeLocation(next); 
-                return; 
-            }
-            
-        
-        }
-        
-        
-        vNode next = route.get(0); 
-        route.remove(0);
-        changeLocation(next); 
-        
-    }
-    */
+   
     
     public void update()
     {
