@@ -146,7 +146,10 @@ public abstract class vNode
     {
         for (int i = 0; i < inhabitants.size(); i++) {
             Agent agent = inhabitants.get(i);
+            if(!agent.isDead())
+            {
             agent.update();
+            }
         }
     }
     
