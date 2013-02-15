@@ -18,7 +18,7 @@ public class City extends location
         Random generator = new Random();
         System.out.println("Creating city");        
         nodes = new ArrayList<vNode>();        
-       /* nodes.add(new streetNode("Route 1", generator.nextInt(1000)));
+        nodes.add(new streetNode("Route 1", generator.nextInt(1000)));
         int streetnames = 0;
         for (int i = 0; i < streets; i++) 
         {
@@ -46,8 +46,8 @@ public class City extends location
         {
             Agent agent = start.inhabitants.get(i);
             agent.infect(infection);
-        }*/
-     nodes.add(new streetNode("route 1", 400));
+        }
+    /* nodes.add(new streetNode("route 1", 400));
      nodes.add(new buildingNode("building 1", 500, 1));
      nodes.add(new buildingNode("building 2", 200, 0));
      nodes.add(new buildingNode("building 3", 600, 0));
@@ -75,7 +75,7 @@ public class City extends location
             nodes.get(i).setMap(nodes);
         }
      for (int i = 0; i < nodes.size(); i++) nodes.get(i).createAgents();
-     nodes.get(1).inhabitants.get(0).infect(new illness());
+     nodes.get(1).inhabitants.get(0).infect(new illness());*/
      
      
     }

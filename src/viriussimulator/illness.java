@@ -16,12 +16,15 @@ public class illness extends Virus{
 
     @Override
     public double stageApperence(int Stage) {
-        return 1;
+        return .8-(Stage/8);
     }
 
 
     @Override
     public boolean agentDeath(Agent agent) {
+        if (agent.stage>=10) {
+            return true;
+        }
     return false;
     }
 

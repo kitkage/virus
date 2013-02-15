@@ -82,11 +82,21 @@ public class Agent
     
     public void update()
     {
+        Random generator = new Random();
        if (!(schedule.size() > 1))
        {
            return; 
        }
-       if (atspot) timer ++; 
+       if (atspot)
+       {
+           if (timer == 1)
+           {
+               int neg = generator.nextInt(1);
+               if (neg == 0) timer =4; 
+           }
+           else timer ++;
+       }
+        
       /* System.out.println("Agent is: " + this.name); 
        System.out.println("Route is: " + route.toString());
        System.out.println("Destination is: " + schedule.get(scheduleplace).toString() + " and the timer is at " + timer + " starting from " + this.location.toString()); 
@@ -99,9 +109,9 @@ public class Agent
             atspot = false; 
             this.route = this.findRoute(schedule.get(scheduleplace)); 
             if (route.size() > 1 && route.get(0).name.equals(this.location.name)) route.remove(0);
-            if(route.size() > 1 && route.get(0).name.equals(this.location.name)) route.remove(0);
-            System.out.println("Time to move along the route: " + route.toString()); 
-            System.out.println("Connections are: " + this.location.connections.toString()); 
+            //if(route.size() > 1 && route.get(0).name.equals(this.location.name)) route.remove(0);
+          //  System.out.println("Time to move along the route: " + route.toString()); 
+            //System.out.println("Connections are: " + this.location.connections.toString()); 
 
            // System.out.println("Time to move along the route: " + route.toString()); 
 
@@ -116,18 +126,18 @@ public class Agent
                 atspot = true;
                 if(!changeLocation(route.get(0)))
                 {
-                    System.out.println("Error: Route is: " + route.toString() + " this location is: " + this.location.toString() + " and connections are: " + this.location.connections.toString()); 
+                  //  System.out.println("Error: Route is: " + route.toString() + " this location is: " + this.location.toString() + " and connections are: " + this.location.connections.toString()); 
                     return; 
                 }
             }
             else 
             {
-                System.out.println("Moving"); 
+             //   System.out.println("Moving"); 
                 vNode temp = route.get(0); 
                 route.remove(0); 
                 if(!changeLocation(temp))
                 {
-                    System.out.println("Error: Route is: " + route.toString() + " this location is: " + this.location.toString() + " and connections are: " + this.location.connections.toString() +  " and temp is: " + temp.toString());
+                   // System.out.println("Error: Route is: " + route.toString() + " this location is: " + this.location.toString() + " and connections are: " + this.location.connections.toString() +  " and temp is: " + temp.toString());
                     return; 
                 }
                 
@@ -171,7 +181,7 @@ public class Agent
     
     public ArrayList<vNode> findRoute(vNode v)
     {
-        System.out.println("Finding route to: " + v.toString()); 
+       // System.out.println("Finding route to: " + v.toString()); 
         nodeQueue route = new nodeQueue(); 
        // System.out.println("Finding route"); 
         //System.out.println("Start location is: " + location.name + " and Destination is: " + v.name); 
@@ -180,9 +190,9 @@ public class Agent
     
     private ArrayList<vNode> DFS (vNode v, vNode current, nodeQueue iroute, nodeQueue explored)
     {
-        System.out.println("DFS currently looking at: " + current.toString()); 
+       // System.out.println("DFS currently looking at: " + current.toString()); 
         iroute.push(current);
-        System.out.println("iroute is: " + iroute.toArrayList().toString()); 
+       // System.out.println("iroute is: " + iroute.toArrayList().toString()); 
         if (current.name.equals(v.name))
         {
             return iroute.toArrayList(); 
@@ -269,7 +279,10 @@ public class Agent
     
     public boolean isDead()
     {
-        return virus.agentDeath(this);
+        if (infected) {
+            return virus.agentDeath(this);
+        }
+        return false;
     }
     public double infectionRadios()
     {
