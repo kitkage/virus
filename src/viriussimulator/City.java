@@ -110,7 +110,7 @@ public class City extends location
         {
             building++;
             
-            buildingNode b = new buildingNode("building "+building, generator.nextInt(2000));
+            buildingNode b = new buildingNode("building "+ building, generator.nextInt(2000));
             //for (int y =0; y < population; y++) this.createAgents(b);
             val.add(b);
         }
@@ -121,7 +121,7 @@ public class City extends location
         val.get(i).addConnection(val.get(0)); 
 
      }
-                 System.out.println(val.get(0).connections.size()+" val connections");
+     System.out.println(val.get(0).connections.size()+" val connections");
 
       
      System.out.println(val.size()+" street size");

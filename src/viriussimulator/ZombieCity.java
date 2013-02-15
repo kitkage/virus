@@ -46,7 +46,7 @@ public class ZombieCity extends City
         for (int y = 0; y < 20; y++) this.createAgents(start);
         for (int i = 0; i < nodes.size(); i++) 
         {
-            this.createAgents(nodes.get(i));
+            for (int ag =0; ag < numAgents/nodes.size(); ag++) this.createAgents(nodes.get(i));
         }
         for (int i = 0; i < start.inhabitants.size(); i++) 
         {
