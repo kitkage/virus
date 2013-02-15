@@ -20,7 +20,8 @@ public class City extends location
         nodes = new ArrayList<vNode>();        
         nodes.add(new streetNode("Route 1", generator.nextInt(1000)));
         int streetnames = 0;
-        for (int i = 0; i < streets; i++) {
+        for (int i = 0; i < streets; i++) 
+        {
             ArrayList<vNode> temp = streetMaker(generator.nextInt(100), generator.nextInt(100), 2 + i, 1 + streetnames);
             streetnames += temp.size() - 1;
             nodes.get(0).addConnection(temp.get(0));
@@ -33,13 +34,16 @@ public class City extends location
         nodes.get(0).addConnection(start);
         start.addConnection(nodes.get(0));
         nodes.add(start);
-        for (int i = 0; i < nodes.size(); i++) {
+        for (int i = 0; i < nodes.size(); i++) 
+        {
             nodes.get(i).setMap(nodes);
         }
-        for (int i = 0; i < nodes.size(); i++) {
+        for (int i = 0; i < nodes.size(); i++) 
+        {
             nodes.get(i).createAgents();
         }
-        for (int i = 0; i < start.inhabitants.size(); i++) {
+        for (int i = 0; i < start.inhabitants.size(); i++) 
+        {
             Agent agent = start.inhabitants.get(i);
             agent.infect(infection);
         }
@@ -79,7 +83,8 @@ public class City extends location
             node.update();
         }
         
-        for (int i = 0; i < nodes.size(); i++) {
+        for (int i = 0; i < nodes.size(); i++) 
+        {
             vNode node = nodes.get(i);
             System.out.println(node.readOut());
         }
@@ -92,7 +97,8 @@ public class City extends location
         Random generator = new Random();        
         ArrayList<vNode> val=new ArrayList<>();
         val.add(new streetNode("street "+street,generator.nextInt(100)));
-        for (int i = 0; i < size; i++) {
+        for (int i = 0; i < size; i++) 
+        {
             val.add(new buildingNode("building "+building, generator.nextInt(2000), population));
         }
         System.out.println("Adding connections"); 

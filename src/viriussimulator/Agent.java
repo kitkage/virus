@@ -33,13 +33,17 @@ public class Agent
     
     public void update()
     {
+        //System.out.println("In Agent update"); 
+                
         if (route.isEmpty())
         {
             
             route = this.findRoute(schedule.get(scheduleplace)); 
         }
-        while (route.size()==0) {            
+        while (route.size()==0) 
+        {            
             scheduleplace++;
+            if (scheduleplace >= schedule.size()) scheduleplace = 0; 
             route = this.findRoute(schedule.get(scheduleplace));
         }
         
