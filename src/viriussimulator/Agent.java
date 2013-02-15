@@ -22,8 +22,8 @@ public class Agent extends AbstractAgent
     Virus virus;
     double avoidance=0.6;
     int scheduleplace; 
-    private int timer;
-    private boolean atspot; 
+    protected int timer;
+    protected boolean atspot; 
     public Agent(String n, vNode start)
     {
         name = n; 
