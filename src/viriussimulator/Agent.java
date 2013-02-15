@@ -22,15 +22,20 @@ public class Agent
     Virus virus;
     double avoidance=0.6;
     int scheduleplace; 
+    private int timer;
+    private boolean atspot; 
     public Agent(String n, vNode start)
     {
         name = n; 
         location = start; 
         route = new ArrayList<vNode>(); 
         schedule = new ArrayList<vNode>(); 
-        schedule = generateSchedule(); 
+        schedule = generateSchedule();
+        timer = 0; 
+        atspot = true; 
+        scheduleplace = 0; 
     }
-    
+    /*
     public void update()
     {
         //System.out.println("In Agent update"); 
@@ -73,6 +78,46 @@ public class Agent
         changeLocation(next); 
         
     }
+    */
+    
+    public void update()
+    {
+       if (!(schedule.size() > 1))
+       {
+           return; 
+       }
+        if (atspot) timer ++; 
+       //System.out.println("Route is: " + route.toString());
+        //System.out.println("Destination is: " + schedule.get(scheduleplace).toString() + " and the timer is at " + timer + "starting from " + this.location.toString()); 
+        if (timer == 4 && atspot)
+        {
+            scheduleplace++; 
+            if(scheduleplace >= schedule.size()) scheduleplace = 0; 
+            timer = 0;
+            atspot = false; 
+            route = this.findRoute(schedule.get(scheduleplace)); 
+            //System.out.println("Time to move along the route: " + route.toString()); 
+
+        }
+        
+        if (!atspot)
+        {
+            if (route.get(0).name.equals(this.name))
+            {
+                atspot = true;
+                changeLocation(route.get(0)); 
+            }
+            else 
+            {
+                vNode temp = route.get(0); 
+                route.remove(0);
+                changeLocation(temp);
+            }
+        }
+        
+    }
+    
+     
     public boolean changeLocation(vNode v)
     {
         if (!location.connections.contains(v)) return false; 
@@ -90,10 +135,10 @@ public class Agent
         for (int i = 0; i < scheduleplace; i++)
         {
             int next = num.nextInt(map.size()); 
-            for (int x = 0; x < 4; x ++)
-            {
+           // for (int x = 0; x < 4; x ++)
+            //{
                 s.add(map.get(next));
-            }
+            //}
         }
         return s; 
     }
@@ -132,17 +177,17 @@ public class Agent
                     
                     if (!further.isEmpty())
                     {
-                        /*System.out.println("Destination is: " + v.name); 
+                     /*   System.out.println("Destination is: " + v.name); 
                         for (int x = 0; x < further.size(); x++)
                         {
                             System.out.println("Route step " + x + " is: " + further.get(x).name); 
-                        }*/
+                        } */
                         return further; 
                     }
                     
                 }
             }
-            //System.out.println("Returning empty list"); 
+            
             return new ArrayList<vNode>();
         }
         
