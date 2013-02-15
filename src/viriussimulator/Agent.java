@@ -87,9 +87,10 @@ public class Agent
            return; 
        }
        if (atspot) timer ++; 
-       System.out.println("Agent is: " + this.name); 
+      /* System.out.println("Agent is: " + this.name); 
        System.out.println("Route is: " + route.toString());
        System.out.println("Destination is: " + schedule.get(scheduleplace).toString() + " and the timer is at " + timer + " starting from " + this.location.toString()); 
+       * */
        if (timer == 4 && atspot)
        {
             scheduleplace++; 
@@ -97,7 +98,7 @@ public class Agent
             timer = 0;
             atspot = false; 
             this.route = this.findRoute(schedule.get(scheduleplace)); 
-            System.out.println("Time to move along the route: " + route.toString()); 
+           // System.out.println("Time to move along the route: " + route.toString()); 
 
         }
         
@@ -105,7 +106,7 @@ public class Agent
         {
             if (route.get(0).name.equals(this.location.name))
             {
-                System.out.println("Reached next location"); 
+                //System.out.println("Reached next location"); 
                 atspot = true;
                 changeLocation(route.get(0)); 
             }
@@ -122,7 +123,9 @@ public class Agent
      
     public boolean changeLocation(vNode v)
     {
+        
         if (!location.connections.contains(v)) return false; 
+       System.out.println("change location");
         return location.inhabitantExits(this, v); 
     }
     
