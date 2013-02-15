@@ -5,6 +5,7 @@
 package viriussimulator;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 /**
  *
@@ -14,10 +15,11 @@ public class ZombieAgent extends Agent
 {
     public ZombieAgent(String n, vNode start)
     {
+        
         super(n, start);  
         virus = new zombievirus();
         stage = 10; 
-        
+        infected = true;  
     }
     
     public void update()
@@ -37,7 +39,8 @@ public class ZombieAgent extends Agent
             }
             
         }
-        
+        Random change = new Random(); 
+        if (maxSpot == 0 && max == 0) maxSpot = change.nextInt(spots.size() -1 ); 
         this.changeLocation(spots.get(maxSpot));
     }
     

@@ -117,7 +117,7 @@ public class SurvivorAgent extends Agent
             }
             else zombies+=1; 
         }
-        if (zombies == 0) return surviors; 
+        if (zombies == 0) return surviors + 1; 
         return (surviors/zombies); 
         
     }

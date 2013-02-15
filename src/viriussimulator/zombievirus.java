@@ -26,7 +26,7 @@ public class zombievirus extends Virus{
             vNode l = agent.location;
             l.inhabitants.remove(agent);
             l.inhabitants.add(a);
-            System.out.println("ZOMBIE!"); 
+            //System.out.println("ZOMBIE!"); 
             return false;
         }
         
