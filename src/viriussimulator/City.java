@@ -102,7 +102,7 @@ public class City extends location
             val.add(new buildingNode("building "+building, generator.nextInt(2000), population));
         }
         System.out.println("Adding connections"); 
-     for (int i = 1; i < size; i++) 
+     for (int i = 1; i < val.size(); i++) 
      {
         val.get(0).addConnection(val.get(i));
         val.get(i).addConnection(val.get(0)); 
