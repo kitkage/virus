@@ -82,7 +82,7 @@ public abstract class vNode
                 {
                     Agent infec = infected.get(j);
                     if (!agent.avoid(infec)) {
-                        agentinfec+=infec.infectionRadios();
+                        agentinfec+=infec.infectionRadius();
                     }
                 }
                 if (Math.random()<agentinfec/this.size) {
