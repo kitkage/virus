@@ -48,5 +48,11 @@ public class ZombieAgent extends Agent
         
         return humans; 
     }
+    public void panicCheck(double percent) 
+    {
+        
+            paniced=false;
+            
+    }
     
 }

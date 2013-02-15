@@ -13,7 +13,7 @@ import java.util.Random;
  */
 public class SurvivorAgent extends Agent 
 {
-    private boolean isPanicked;
+    
     
     public SurvivorAgent(String n, vNode start)
     {
@@ -22,7 +22,7 @@ public class SurvivorAgent extends Agent
     
     public void update()
     {
-       if (isPanicked)
+       if (paniced)
        {
            ArrayList havens = new ArrayList(); 
            havens.add(this.zombieSurviorRatio(this.location));
@@ -117,11 +117,20 @@ public class SurvivorAgent extends Agent
             }
             else zombies+=1; 
         }
+        if (zombies == 0) return surviors; 
         return (surviors/zombies); 
         
     }
     
-    
+    public void panicCheck(double percent) 
+    {
+        
+        if (percent>panic) 
+        {
+            paniced=true;
+            
+        }
+    }
     
     
     

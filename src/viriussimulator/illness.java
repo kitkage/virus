@@ -12,10 +12,12 @@ import java.util.Random;
  *
  * @author swishept
  */
-public class illness extends Virus{
+public class illness extends Virus
+{
 
     @Override
-    public double stageApperence(int Stage) {
+    public double stageApperence(int Stage) 
+    {
         return .8-(Stage/8);
     }
 
