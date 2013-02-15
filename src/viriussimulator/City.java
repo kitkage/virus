@@ -22,7 +22,7 @@ public class City extends location
         int streetnames = 0;
         for (int i = 0; i < streets; i++) 
         {
-            ArrayList<vNode> temp = streetMaker(generator.nextInt(100), generator.nextInt(100), 2 + i, 1 + streetnames);
+            ArrayList<vNode> temp = streetMaker(3, 1, 2 + i, 1 + streetnames);
             streetnames += temp.size() - 1;
             nodes.get(0).addConnection(temp.get(0));
             temp.get(0).addConnection(nodes.get(0));
@@ -108,7 +108,8 @@ public class City extends location
         val.get(i).addConnection(val.get(0)); 
 
      }
-     
+                 System.out.println(val.get(0).connections.size()+" val connections");
+
       
      System.out.println(val.size()+" street size");
      return val;
