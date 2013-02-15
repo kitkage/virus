@@ -86,31 +86,33 @@ public class Agent
        {
            return; 
        }
-        if (atspot) timer ++; 
-       //System.out.println("Route is: " + route.toString());
-        //System.out.println("Destination is: " + schedule.get(scheduleplace).toString() + " and the timer is at " + timer + "starting from " + this.location.toString()); 
-        if (timer == 4 && atspot)
-        {
+       if (atspot) timer ++; 
+       System.out.println("Agent is: " + this.name); 
+       System.out.println("Route is: " + route.toString());
+       System.out.println("Destination is: " + schedule.get(scheduleplace).toString() + " and the timer is at " + timer + " starting from " + this.location.toString()); 
+       if (timer == 4 && atspot)
+       {
             scheduleplace++; 
             if(scheduleplace >= schedule.size()) scheduleplace = 0; 
             timer = 0;
             atspot = false; 
-            route = this.findRoute(schedule.get(scheduleplace)); 
-            //System.out.println("Time to move along the route: " + route.toString()); 
+            this.route = this.findRoute(schedule.get(scheduleplace)); 
+            System.out.println("Time to move along the route: " + route.toString()); 
 
         }
         
         if (!atspot)
         {
-            if (route.get(0).name.equals(this.name))
+            if (route.get(0).name.equals(this.location.name))
             {
+                System.out.println("Reached next location"); 
                 atspot = true;
                 changeLocation(route.get(0)); 
             }
             else 
             {
                 vNode temp = route.get(0); 
-                route.remove(0);
+                route.remove(0); 
                 changeLocation(temp);
             }
         }
