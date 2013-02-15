@@ -99,12 +99,22 @@ public class ZombieCity extends City
         for (int i = 0; i < nodes.size(); i++) 
         {
             vNode node = nodes.get(i);
-            System.out.println(node.readOut());
+            System.out.println(node.readOut() + " with  " + numZombies(node) + " people zombies and connected to " + node.connections.get(0).name);
         }
         
-    };
+    }
 
-    
+    private int numZombies (vNode v)
+    {
+        int n = 0; 
+        
+        
+        for (int x = 0; x < v.inhabitants.size(); x++)
+        {
+            if (v.inhabitants.get(x).getClass().equals(ZombieAgent.class)) n++; 
+        }
+        return n; 
+    }
    
     public void createAgents(vNode n)
     {
