@@ -21,6 +21,7 @@ public class ZombieAgent extends Agent
     {
         ArrayList<vNode> spots = new ArrayList<vNode>(); 
         spots.add(this.location);
+        spots.addAll(this.location.connections);
         for (int x = 0; x < this.location.connections.size(); x++)
         {
             

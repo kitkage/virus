@@ -58,6 +58,8 @@ public abstract class AbstractAgent
   
     public abstract double infectionRadius(); 
     
-    public abstract void panicCheck(double percent);
+    public  void panicCheck(double percent){
+        
+    };
     
 }

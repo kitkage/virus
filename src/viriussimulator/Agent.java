@@ -24,8 +24,10 @@ public class Agent extends AbstractAgent
     int scheduleplace; 
     protected int timer;
     protected boolean atspot; 
+
  
     public double panic=.4;
+
     public vNode home;
     public boolean paniced=false;
     public Agent(String n, vNode start)
@@ -241,6 +243,7 @@ public class Agent extends AbstractAgent
             return 0;
     }
 
+    @Override
     public void panicCheck(double percent) {
         if (location.name.equals(home.name)||paniced) {
             if (paniced==false) {
