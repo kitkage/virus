@@ -78,13 +78,16 @@ public abstract class vNode
             {
 
                 double agentinfec=0.0;
+                double infecAmount=0.0;
                 for (int j = 0; j < infected.size(); j++) 
                 {
                     Agent infec = infected.get(j);
                     if (!agent.avoid(infec)) {
+                        infecAmount++;
                         agentinfec+=infec.infectionRadius();
                     }
                 }
+                agent.panicCheck(infecAmount/inhabitants.size());
                 if (Math.random()<agentinfec/this.size) {
                     
                     agent.infect(infected.get(0).virus);

@@ -24,10 +24,14 @@ public class Agent extends AbstractAgent
     int scheduleplace; 
     private int timer;
     private boolean atspot; 
+    public double panic=.4;
+    public vNode home;
+    public boolean paniced=false;
     public Agent(String n, vNode start)
     {
         name = n; 
         location = start; 
+        home=start;
         route = new ArrayList<vNode>(); 
         schedule = new ArrayList<vNode>(); 
         schedule = generateSchedule();
@@ -39,6 +43,10 @@ public class Agent extends AbstractAgent
     
     public void update()
     {
+        
+        if (paniced&&location.name.equals(home.name)) {
+            return;
+        }
         Random generator = new Random();
        if (!(schedule.size() > 1))
        {
@@ -230,6 +238,19 @@ public class Agent extends AbstractAgent
                 return virus.infectionArea(stage);
             }
             return 0;
+    }
+
+    public void panicCheck(double percent) {
+        if (location.name.equals(home.name)||paniced) {
+            if (paniced==false) {
+                paniced=true;
+            }
+            return;
+        }
+        if (percent>panic) {
+            paniced=true;
+            route=findRoute(home);
+        }
     }
     
     
