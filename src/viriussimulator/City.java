@@ -5,7 +5,6 @@
 package viriussimulator;
 import java.util.ArrayList;
 import java.util.Random;
-import org.omg.PortableInterceptor.SYSTEM_EXCEPTION;
 
 /**
  *
