@@ -99,7 +99,7 @@ public class Agent
             atspot = false; 
             this.route = this.findRoute(schedule.get(scheduleplace)); 
             if (route.size() > 1 && route.get(0).name.equals(this.location.name)) route.remove(0);
-            //if(route.size() > 1) route.remove(0);
+            if(route.size() > 1 && route.get(0).name.equals(this.location.name)) route.remove(0);
             System.out.println("Time to move along the route: " + route.toString()); 
             System.out.println("Connections are: " + this.location.connections.toString()); 
 
@@ -171,7 +171,7 @@ public class Agent
     
     public ArrayList<vNode> findRoute(vNode v)
     {
-        
+        System.out.println("Finding route to: " + v.toString()); 
         nodeQueue route = new nodeQueue(); 
        // System.out.println("Finding route"); 
         //System.out.println("Start location is: " + location.name + " and Destination is: " + v.name); 
@@ -180,7 +180,9 @@ public class Agent
     
     private ArrayList<vNode> DFS (vNode v, vNode current, nodeQueue iroute, nodeQueue explored)
     {
+        System.out.println("DFS currently looking at: " + current.toString()); 
         iroute.push(current);
+        System.out.println("iroute is: " + iroute.toArrayList().toString()); 
         if (current.name.equals(v.name))
         {
             return iroute.toArrayList(); 
@@ -188,15 +190,21 @@ public class Agent
         
         else 
         {
-            
             explored.push(current);
+            
             for (int i = 0; i < current.connections.size(); i++)
             {
                 if(!explored.contains(current.connections.get(i)))
                 {
                     
-                    ArrayList<vNode> further = new ArrayList<vNode>();  
-                    further = DFS(v, current.connections.get(i), iroute, explored);
+                    ArrayList<vNode> further = new ArrayList<vNode>();
+                    nodeQueue temp = new nodeQueue(); 
+                    for(int x = 0; x < iroute.toArrayList().size(); x++)
+                    {
+                        temp.push(iroute.toArrayList().get(x));
+                    }
+                    
+                    further = DFS(v, current.connections.get(i), temp, explored);
                     
                     if (!further.isEmpty())
                     {

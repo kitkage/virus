@@ -60,14 +60,14 @@ public class City extends location
      nodes.add(new buildingNode("building 10", 1000, 0));
      nodes.add(new buildingNode("building 11", 1000, 0));
      System.out.println("Adding connections"); 
-     for (int i = 1; i < nodes.size()-1; i++) 
+     for (int i = 1; i < nodes.size(); i++) 
      {
         nodes.get(0).addConnection(nodes.get(i));
         nodes.get(i).addConnection(nodes.get(0)); 
-        System.out.println("Number of connections is: " + nodes.get(i).connections.size()); 
+        //System.out.println("Number of connections is: " + nodes.get(i).connections.size()); 
 
      }
-     System.out.println("StreetConnection size is: " + nodes.get(0).connections.size()); 
+     //System.out.println("StreetConnection size is: " + nodes.get(0).connections.size()); 
      
       
      for (int i = 0; i < nodes.size(); i++) 
