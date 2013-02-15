@@ -11,26 +11,30 @@ import java.util.Random;
  *
  * @author swishept
  */
-public class ZombieCity extends location{
+public class ZombieCity extends City
+{
 
-    public ZombieCity(int streets) {
-    
-    
-  Random generator = new Random();
+    int numAgents; 
+    public ZombieCity (int streets, int nAgents)
+    {
+        super(streets, nAgents); 
+        numAgents = nAgents; 
+        Random generator = new Random();
         System.out.println("Creating city");        
         nodes = new ArrayList<vNode>();        
         nodes.add(new streetNode("Route 1", generator.nextInt(1000)));
         int streetnames = 0;
         for (int i = 0; i < streets; i++) 
         {
-            ArrayList<vNode> temp = streetMaker(generator.nextInt(100), generator.nextInt(100), 2 + i, 1 + streetnames);
+            ArrayList<vNode> temp = streetMaker(generator.nextInt(100), numAgents/streets, 2 + i, 1 + streetnames);
             streetnames += temp.size() - 1;
             nodes.get(0).addConnection(temp.get(0));
             temp.get(0).addConnection(nodes.get(0));
             nodes.addAll(temp);
             System.out.println(nodes.size()+" node size");
         }
-        buildingNode start = new buildingNode("start point", 5000, 20);
+        buildingNode start = new buildingNode("start point", 5000);
+        
         Virus infection = new illness();
         nodes.get(0).addConnection(start);
         start.addConnection(nodes.get(0));
@@ -39,9 +43,10 @@ public class ZombieCity extends location{
         {
             nodes.get(i).setMap(nodes);
         }
+        for (int y = 0; y < 20; y++) this.createAgents(start);
         for (int i = 0; i < nodes.size(); i++) 
         {
-            nodes.get(i).createAgents();
+            this.createAgents(nodes.get(i));
         }
         for (int i = 0; i < start.inhabitants.size(); i++) 
         {
@@ -100,28 +105,16 @@ public class ZombieCity extends location{
     };
 
     
-    public ArrayList streetMaker(int size, int population, int street, int building)
+   
+    public void createAgents(vNode n)
     {
-        Random generator = new Random();        
-        ArrayList<vNode> val=new ArrayList<>();
-        val.add(new streetNode("street "+street,generator.nextInt(100)));
-        for (int i = 0; i < size; i++) 
-        {
-            building++;
-            val.add(new buildingNode("building "+building, generator.nextInt(2000), population));
-        }
-        System.out.println("Adding connections"); 
-     for (int i = 1; i < val.size(); i++) 
-     {
-        val.get(0).addConnection(val.get(i));
-        val.get(i).addConnection(val.get(0)); 
-
-     }
-                 System.out.println(val.get(0).connections.size()+" val connections");
-
-      
-     System.out.println(val.size()+" street size");
-     return val;
+         
+            Random id = new Random(); 
+            Integer i = id.nextInt(100000000);
+            SurvivorAgent a = new SurvivorAgent(i.toString() , n); 
+            n.inhabitants.add(a);
+        
     }
+    
     
 }

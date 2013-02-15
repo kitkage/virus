@@ -13,13 +13,13 @@ public class buildingNode extends vNode
 { 
     
     private int numAgents; 
-    public buildingNode(String n, double area, int numAgent)
+    public buildingNode(String n, double area)
     {
         name = n; 
         size = area;
         connections = new ArrayList<vNode>();
         inhabitants = new ArrayList<Agent>();
-        numAgents = numAgent; 
+        
     }
         
     
@@ -61,15 +61,6 @@ public class buildingNode extends vNode
         return false; 
     }
     
-    public void createAgents()
-    {
-          for (int x = 0; x <numAgents; x++)
-        {
-            Random id = new Random(); 
-            Integer i = id.nextInt(100000000);
-            Agent a = new Agent(i.toString() , this); 
-            inhabitants.add(a);
-        }
-    }
+    
     
 }

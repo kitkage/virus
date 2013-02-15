@@ -19,7 +19,7 @@ public abstract class vNode
     
     public abstract boolean inhabitantExits(Agent a, vNode v); 
     public abstract boolean addConnection(vNode v);
-    public abstract void createAgents();
+    
     public ArrayList<vNode> getMap()
     {
         if (map.isEmpty()) 

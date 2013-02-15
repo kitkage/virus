@@ -11,9 +11,10 @@ import java.util.Random;
  * @author baroba
  */
 public class City extends location 
-{
-    public City (int streets)
+{   int numAgents; 
+    public City (int streets, int nAgents)
     {
+        numAgents = nAgents; 
         Random generator = new Random();
         System.out.println("Creating city");        
         nodes = new ArrayList<vNode>();        
@@ -21,14 +22,15 @@ public class City extends location
         int streetnames = 0;
         for (int i = 0; i < streets; i++) 
         {
-            ArrayList<vNode> temp = streetMaker(generator.nextInt(100), generator.nextInt(100), 2 + i, 1 + streetnames);
+            ArrayList<vNode> temp = streetMaker(generator.nextInt(100), numAgents/streets, 2 + i, 1 + streetnames);
             streetnames += temp.size() - 1;
             nodes.get(0).addConnection(temp.get(0));
             temp.get(0).addConnection(nodes.get(0));
             nodes.addAll(temp);
             System.out.println(nodes.size()+" node size");
         }
-        buildingNode start = new buildingNode("start point", 5000, 20);
+        buildingNode start = new buildingNode("start point", 5000);
+        
         Virus infection = new illness();
         nodes.get(0).addConnection(start);
         start.addConnection(nodes.get(0));
@@ -37,9 +39,10 @@ public class City extends location
         {
             nodes.get(i).setMap(nodes);
         }
+        for (int y = 0; y < 20; y++) this.createAgents(start);
         for (int i = 0; i < nodes.size(); i++) 
         {
-            nodes.get(i).createAgents();
+            this.createAgents(nodes.get(i));
         }
         for (int i = 0; i < start.inhabitants.size(); i++) 
         {
@@ -106,7 +109,10 @@ public class City extends location
         for (int i = 0; i < size; i++) 
         {
             building++;
-            val.add(new buildingNode("building "+building, generator.nextInt(2000), population));
+            
+            buildingNode b = new buildingNode("building "+building, generator.nextInt(2000));
+            //for (int y =0; y < population; y++) this.createAgents(b);
+            val.add(b);
         }
         System.out.println("Adding connections"); 
      for (int i = 1; i < val.size(); i++) 
@@ -120,6 +126,15 @@ public class City extends location
       
      System.out.println(val.size()+" street size");
      return val;
+    }
+    public void createAgents(vNode n)
+    {
+         
+            Random id = new Random(); 
+            Integer i = id.nextInt(100000000);
+            Agent a = new Agent(i.toString() , n); 
+            n.inhabitants.add(a);
+        
     }
     
 }

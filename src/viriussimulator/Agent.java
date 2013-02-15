@@ -126,6 +126,7 @@ public class Agent extends AbstractAgent
         scheduleplace = num.nextInt(10) + 1; 
         for (int i = 0; i < scheduleplace; i++)
         {
+            
             int next = num.nextInt(map.size()); 
            
             s.add(map.get(next));
@@ -244,7 +245,8 @@ public class Agent extends AbstractAgent
     }
 
     @Override
-    public void panicCheck(double percent) {
+    public void panicCheck(double percent) 
+    {
         if (location.name.equals(home.name)||paniced) {
             if (paniced==false) {
                 paniced=true;

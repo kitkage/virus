@@ -25,11 +25,11 @@ public class SurvivorAgent extends Agent
        if (paniced)
        {
            ArrayList havens = new ArrayList(); 
+           havens.add(this.location);
            havens.add(this.zombieSurviorRatio(this.location));
-          
            for (int i = 0; i < this.location.connections.size(); i++)
            {
-           havens.add(this.location); 
+            
                havens.add(this.location.connections.get(i)); 
                havens.add(this.zombieSurviorRatio(this.location.connections.get(i))); 
            }
