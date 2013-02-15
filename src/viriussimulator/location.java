@@ -16,7 +16,6 @@ public abstract class location {
     int numStartingAgents;
     
     public abstract void update();
-    public abstract double deadPercent();
     
     
 }

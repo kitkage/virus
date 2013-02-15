@@ -35,8 +35,15 @@ public class Agent
     {
         if (route.isEmpty())
         {
+            
             route = this.findRoute(schedule.get(scheduleplace)); 
         }
+        while (route.size()==0) {            
+            scheduleplace++;
+            route = this.findRoute(schedule.get(scheduleplace));
+        }
+        
+
         if (location.name.equals(route.get(0).name) && schedule.contains(location))
         {
             scheduleplace++; 
