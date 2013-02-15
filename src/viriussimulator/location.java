@@ -21,6 +21,7 @@ public abstract class location {
     {
         int dead=0;
         int total=0;
+        int infected=0;
         for (int i = 0; i < nodes.size(); i++) {
             vNode node = nodes.get(i);
             for (int j = 0; j < node.inhabitants.size(); j++) {
@@ -29,10 +30,14 @@ public abstract class location {
                 if (agent.isDead()) {
                     dead++;
                 }
+                if (agent.isInfected()) {
+                    infected++;
+                }
                 
             }
             
         }
+        System.out.println(infected+" people infected out of "+total);
         System.out.println(dead+" people dead out of "+total);
     }
     
