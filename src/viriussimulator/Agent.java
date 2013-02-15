@@ -240,6 +240,7 @@ public class Agent extends AbstractAgent
             return 0;
     }
 
+    @Override
     public void panicCheck(double percent) {
         if (location.name.equals(home.name)||paniced) {
             if (paniced==false) {
