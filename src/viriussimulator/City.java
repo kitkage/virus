@@ -22,12 +22,12 @@ public class City extends location
         int streetnames = 0;
         for (int i = 0; i < streets; i++) 
         {
-            ArrayList<vNode> temp = streetMaker(3, 1, 2 + i, 1 + streetnames);
+            ArrayList<vNode> temp = streetMaker(generator.nextInt(100), generator.nextInt(100), 2 + i, 1 + streetnames);
             streetnames += temp.size() - 1;
             nodes.get(0).addConnection(temp.get(0));
             temp.get(0).addConnection(nodes.get(0));
             nodes.addAll(temp);
-            System.out.println(nodes.size()+" node size");
+            System.out.println(nodes.get(0).connections.size() +" node size");
         }
         buildingNode start = new buildingNode("start point", 5000, 20);
         Virus infection = new illness();
@@ -99,6 +99,7 @@ public class City extends location
         val.add(new streetNode("street "+street,generator.nextInt(100)));
         for (int i = 0; i < size; i++) 
         {
+            building++;
             val.add(new buildingNode("building "+building, generator.nextInt(2000), population));
         }
         System.out.println("Adding connections"); 
