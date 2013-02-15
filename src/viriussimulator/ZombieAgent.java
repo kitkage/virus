@@ -55,4 +55,8 @@ public class ZombieAgent extends Agent
             
     }
     
+    public boolean isDead()
+    {
+        return false;
+    }
 }
