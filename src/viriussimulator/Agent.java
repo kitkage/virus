@@ -97,7 +97,7 @@ public class Agent
             timer = 0;
             atspot = false; 
             this.route = this.findRoute(schedule.get(scheduleplace)); 
-            //route.remove(0);
+            if(route.size() > 1) route.remove(0);
             System.out.println("Time to move along the route: " + route.toString()); 
             System.out.println("Connections are: " + this.location.connections.toString()); 
 
@@ -171,12 +171,12 @@ public class Agent
         return DFS (v, location, route, new nodeQueue()); 
     }
     
-    private ArrayList<vNode> DFS (vNode v, vNode current, nodeQueue route, nodeQueue explored)
+    private ArrayList<vNode> DFS (vNode v, vNode current, nodeQueue iroute, nodeQueue explored)
     {
-        route.push(current);
+        iroute.push(current);
         if (current.name.equals(v.name))
         {
-            return route.toArrayList(); 
+            return iroute.toArrayList(); 
         }
         
         else 
@@ -189,7 +189,7 @@ public class Agent
                 {
                     
                     ArrayList<vNode> further = new ArrayList<vNode>();  
-                    further = DFS(v, current.connections.get(i), route, explored);
+                    further = DFS(v, current.connections.get(i), iroute, explored);
                     
                     if (!further.isEmpty())
                     {
