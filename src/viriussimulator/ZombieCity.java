@@ -35,7 +35,7 @@ public class ZombieCity extends City
         }
         buildingNode start = new buildingNode("start point", 5000);
         
-        Virus infection = new illness();
+        Virus infection = new zombievirus();
         nodes.get(0).addConnection(start);
         start.addConnection(nodes.get(0));
         nodes.add(start);
@@ -114,6 +114,27 @@ public class ZombieCity extends City
             SurvivorAgent a = new SurvivorAgent(i.toString() , n); 
             n.inhabitants.add(a);
         
+    }
+    
+    public void deadamount()
+    {
+        int dead=0;
+        int total=0;
+        for (int i = 0; i < nodes.size(); i++) 
+        {
+            vNode node = nodes.get(i);
+            for (int j = 0; j < node.inhabitants.size(); j++) {
+                Agent agent = node.inhabitants.get(j);
+                total++;
+                if (agent.stage >= 10) 
+                {
+                    dead++;
+                }
+                
+            }
+            
+        }
+        System.out.println(dead+" people zombies out of " + total);
     }
     
     

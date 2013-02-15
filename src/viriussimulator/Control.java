@@ -18,8 +18,9 @@ public class Control {
     public static void main(String[] args) {
         // TODO code application logic here
         Random generator = new Random(); 
-        int num = generator.nextInt(2000); 
-        if (num ==0) num = 1; 
+        //int num = generator.nextInt(2000); 
+        //if (num ==0) num = 1; 
+        int num = 2000; 
         ZombieCity city = new ZombieCity(2, num);
         for (int updates = 0; updates < 100; updates++)
         {

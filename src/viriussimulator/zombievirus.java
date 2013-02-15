@@ -15,10 +15,7 @@ public class zombievirus extends Virus{
         return .8-(Stage/8);
     }
      
-     public void setStage(int Stage)
-     {
-         
-     }
+    
 
     @Override
     public boolean agentDeath(Agent agent) 
@@ -29,6 +26,7 @@ public class zombievirus extends Virus{
             vNode l = agent.location;
             l.inhabitants.remove(agent);
             l.inhabitants.add(a);
+            System.out.println("ZOMBIE!"); 
             return false;
         }
         

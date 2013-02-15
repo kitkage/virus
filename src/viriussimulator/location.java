@@ -17,7 +17,8 @@ public abstract class location {
     
     public abstract void update();
 
-    public void deadamount(){
+    public void deadamount()
+    {
         int dead=0;
         int total=0;
         for (int i = 0; i < nodes.size(); i++) {
