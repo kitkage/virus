@@ -126,7 +126,7 @@ public abstract class vNode
     }
    
     public String readOut(){
-        double infected=0.0;
+        double infected=0.000;
         for (int i = 0; i < inhabitants.size(); i++) {
             Agent agent = inhabitants.get(i);
             if (agent.isInfected()) {
@@ -138,7 +138,7 @@ public abstract class vNode
             percent=infected/inhabitants.size()*100;
         }
         
-        return name+" has "+inhabitants.size()+" inhabitants "+percent+"% infected";
+        return name+" has "+inhabitants.size()+" inhabitants "+percent+"% infected "+infected;
     }
     
     
