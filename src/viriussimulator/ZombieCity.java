@@ -23,25 +23,24 @@ public class ZombieCity extends City
         System.out.println("Creating city");        
         nodes = new ArrayList<vNode>();
         nodes.add(new streetNode("route 1", 400));
-     nodes.add(new buildingNode("building 1", 500));
-     nodes.add(new buildingNode("building 2", 200));
-     nodes.add(new buildingNode("building 3", 600));
-     nodes.add(new buildingNode("building 4", 1000));
-     nodes.add(new buildingNode("building 5", 1000));
-     nodes.add(new buildingNode("building 6", 1000));
-     nodes.add(new buildingNode("building 7", 1000));
-     nodes.add(new buildingNode("building 8", 1000));
-     nodes.add(new buildingNode("building 9", 1000));
-     nodes.add(new buildingNode("building 10", 1000));
-     nodes.add(new buildingNode("building 11", 1000));
-     System.out.println("Adding connections"); 
-     for (int i = 1; i < nodes.size(); i++) 
-     {
-        nodes.get(0).addConnection(nodes.get(i));
-        nodes.get(i).addConnection(nodes.get(0)); 
-        //System.out.println("Number of connections is: " + nodes.get(i).connections.size()); 
+        nodes.add(new buildingNode("building 1", 500));
+        nodes.add(new buildingNode("building 2", 200));
+        nodes.add(new buildingNode("building 3", 600));
+        nodes.add(new buildingNode("building 4", 1000));
+        nodes.add(new buildingNode("building 5", 1000));
+        nodes.add(new buildingNode("building 6", 1000));
+        nodes.add(new buildingNode("building 7", 1000));
+        nodes.add(new buildingNode("building 8", 1000));
+        nodes.add(new buildingNode("building 9", 1000));
+        nodes.add(new buildingNode("building 10", 1000));
+        nodes.add(new buildingNode("building 11", 1000));
+        System.out.println("Adding connections"); 
+        for (int i = 1; i < nodes.size(); i++) 
+        {
+            nodes.get(0).addConnection(nodes.get(i));
+            nodes.get(i).addConnection(nodes.get(0)); 
 
-     }
+        }
         /*
         nodes.add(new streetNode("Route 1", generator.nextInt(1000)));
         int streetnames = 0;

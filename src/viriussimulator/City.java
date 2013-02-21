@@ -14,7 +14,7 @@ public class City extends location
 {   int numAgents; 
     public City (int streets, int nAgents)
     {
-        numAgents = nAgents; 
+        /*numAgents = nAgents; 
         Random generator = new Random();
         System.out.println("Creating city");        
         nodes = new ArrayList<vNode>();        
@@ -30,7 +30,32 @@ public class City extends location
             System.out.println(nodes.size()+" node size");
         }
         buildingNode start = new buildingNode("start point", 5000);
-        
+        */
+        numAgents = nAgents; 
+        Random generator = new Random();
+        System.out.println("Creating city");        
+        nodes = new ArrayList<vNode>();
+        nodes.add(new streetNode("route 1", 400));
+        nodes.add(new buildingNode("building 1", 500));
+        nodes.add(new buildingNode("building 2", 200));
+        nodes.add(new buildingNode("building 3", 600));
+        nodes.add(new buildingNode("building 4", 1000));
+        nodes.add(new buildingNode("building 5", 1000));
+        nodes.add(new buildingNode("building 6", 1000));
+        nodes.add(new buildingNode("building 7", 1000));
+        nodes.add(new buildingNode("building 8", 1000));
+        nodes.add(new buildingNode("building 9", 1000));
+        nodes.add(new buildingNode("building 10", 1000));
+        nodes.add(new buildingNode("building 11", 1000));
+        System.out.println("Adding connections"); 
+        for (int i = 1; i < nodes.size(); i++) 
+        {
+            nodes.get(0).addConnection(nodes.get(i));
+            nodes.get(i).addConnection(nodes.get(0)); 
+
+        }
+        buildingNode start = new buildingNode("start point", 5000);
+
         Virus infection = new illness();
         nodes.get(0).addConnection(start);
         start.addConnection(nodes.get(0));
@@ -42,7 +67,7 @@ public class City extends location
         for (int y = 0; y < 20; y++) this.createAgents(start);
         for (int i = 0; i < nodes.size(); i++) 
         {
-            this.createAgents(nodes.get(i));
+            for (int ag =0; ag < numAgents/nodes.size(); ag++) this.createAgents(nodes.get(i));
         }
         for (int i = 0; i < start.inhabitants.size(); i++) 
         {

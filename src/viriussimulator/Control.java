@@ -23,22 +23,15 @@ public class Control {
        // int num = 5000; 
 
         int num = 2000; 
-        //City city = new City(2,num); 
+        City city = new City(2,num); 
         //ZombieCity city = new ZombieCity(2, num);
-        //for (int updates = 0; updates < 100; updates++)
-        //{
-            //city.update();
+        for (int updates = 0; updates < 100; updates++)
+        {
+            city.update();
         
-        //}
-        //city.deadamount();
+        }
+        city.deadamount();
       
-       /* Agent a = city.nodes.get(1).inhabitants.get(0); 
-        System.out.println("City size is: " + city.nodes.size()); 
-        ArrayList<vNode> route = a.findRoute(city.nodes.get(11)); 
-        if(route.size() > 1 && route.get(0).name.equals(a.location.name)) route.remove(0);
-        System.out.println("The route is: " + route.toString());
-        System.out.println("Starting from: " + a.location.toString()); 
-        System.out.println("The connections are: " + a.location.connections.toString()); */
-        
+       
     }
 }
