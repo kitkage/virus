@@ -17,18 +17,19 @@ public class Control {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        Random generator = new Random(); 
+      //  Random generator = new Random(); 
         //int num = generator.nextInt(2000); 
         //if (num ==0) num = 1; 
-        int num = 5000; 
+       // int num = 5000; 
         //City city = new City(2,num); 
-        ZombieCity city = new ZombieCity(2, num);
-        for (int updates = 0; updates < 100; updates++)
-        {
-            city.update();
+        //ZombieCity city = new ZombieCity(2, num);
+        //for (int updates = 0; updates < 100; updates++)
+        //{
+            //city.update();
         
-        }
-        city.deadamount();
+        //}
+        //city.deadamount();
+      
        /* Agent a = city.nodes.get(1).inhabitants.get(0); 
         System.out.println("City size is: " + city.nodes.size()); 
         ArrayList<vNode> route = a.findRoute(city.nodes.get(11)); 

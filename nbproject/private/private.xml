@@ -1,4 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/1">
+        <file>file:/C:/Users/baroba/Documents/NetBeansProjects/virus/src/viriussimulator/Control.java</file>
+        <file>file:/C:/Users/baroba/Documents/NetBeansProjects/virus/src/viriussimulator/location.java</file>
+        <file>file:/C:/Users/baroba/Documents/NetBeansProjects/virus/src/viriussimulator/City.java</file>
+        <file>file:/C:/Users/baroba/Documents/NetBeansProjects/virus/src/viriussimulator/vNode.java</file>
+        <file>file:/C:/Users/baroba/Documents/NetBeansProjects/virus/src/viriussimulator/streetNode.java</file>
+        <file>file:/C:/Users/baroba/Documents/NetBeansProjects/virus/src/viriussimulator/Agent.java</file>
+        <file>file:/C:/Users/baroba/Documents/NetBeansProjects/virus/src/viriussimulator/Virus.java</file>
+        <file>file:/C:/Users/baroba/Documents/NetBeansProjects/virus/src/viriussimulator/illness.java</file>
+        <file>file:/C:/Users/baroba/Documents/NetBeansProjects/virus/src/viriussimulator/buildingNode.java</file>
+        <file>file:/C:/Users/baroba/Documents/NetBeansProjects/virus/src/viriussimulator/nodeQueue.java</file>
+        <file>file:/C:/Users/baroba/Documents/NetBeansProjects/virus/src/viriussimulator/AbstractAgent.java</file>
+        <file>file:/C:/Users/baroba/Documents/NetBeansProjects/virus/src/viriussimulator/SurvivorAgent.java</file>
+        <file>file:/C:/Users/baroba/Documents/NetBeansProjects/virus/src/viriussimulator/ZombieAgent.java</file>
+        <file>file:/C:/Users/baroba/Documents/NetBeansProjects/virus/src/viriussimulator/ZombieCity.java</file>
+        <file>file:/C:/Users/baroba/Documents/NetBeansProjects/virus/src/viriussimulator/zombievirus.java</file>
+    </open-files>
 </project-private>
