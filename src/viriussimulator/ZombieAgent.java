@@ -21,7 +21,9 @@ public class ZombieAgent extends Agent
         stage = 10; 
         infected = true;  
     }
-    
+    /*Similar to parent class's update, but uses a greedy algorithm to find survivors 
+     * 
+     */
     public void update()
     {
         ArrayList<vNode> spots = new ArrayList<vNode>(); 

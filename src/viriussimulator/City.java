@@ -12,8 +12,14 @@ import java.util.Random;
  */
 public class City extends location 
 {   int numAgents; 
+
+    /* Constructor method 
+     * @param streets The number of streets that the city will have
+     * @param nAgents The number of agents to populate the city 
+     */
     public City (int streets, int nAgents)
     {
+        //usual code 
         /*numAgents = nAgents; 
         Random generator = new Random();
         System.out.println("Creating city");        
@@ -31,6 +37,8 @@ public class City extends location
         }
         buildingNode start = new buildingNode("start point", 5000);
         */
+        
+        //code for formal experiments 
         numAgents = nAgents; 
         Random generator = new Random();
         System.out.println("Creating city");        
@@ -106,6 +114,9 @@ public class City extends location
      
      
     }
+    /*Method that calls all the nodes update methods
+     * 
+     */
     public  void update()
     {
         for (int i = 0; i < nodes.size(); i++) {
@@ -125,7 +136,12 @@ public class City extends location
         
     };
 
-    
+    /*Method that creates all the streets
+     * @param size The size of the street
+     * @param population Currently uselss.  Will be removed eventually 
+     * @param street Street ID number
+     * @param building Starting building id
+     */
     public ArrayList streetMaker(int size, int population, int street, int building)
     {
         Random generator = new Random();        
@@ -152,6 +168,9 @@ public class City extends location
      System.out.println(val.size()+" street size");
      return val;
     }
+    /*Method that creates the agents in a node
+     * @param n  The node to create the agents in
+     */
     public void createAgents(vNode n)
     {
          

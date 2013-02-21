@@ -19,7 +19,9 @@ public class SurvivorAgent extends Agent
     {
         super(n, start);  
     }
-    
+    /*Similar to parent class's update method, but includes the zombie avoding behaviors
+     * 
+     */
     public void update()
     {
        if (paniced)
@@ -103,6 +105,7 @@ public class SurvivorAgent extends Agent
         }
         
     }
+    
     
     private double zombieSurviorRatio(vNode spot)
     {

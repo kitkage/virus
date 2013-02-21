@@ -20,6 +20,9 @@ public abstract class vNode
     public abstract boolean inhabitantExits(Agent a, vNode v); 
     public abstract boolean addConnection(vNode v);
     
+    /*Method that gets the node's copy of the map
+     * 
+     */
     public ArrayList<vNode> getMap()
     {
         if (map.isEmpty()) 
@@ -28,10 +31,18 @@ public abstract class vNode
         }
         return map; 
     }
+    
+    /*Method that allows the node's map to be set.  Used to avoid having to make each node generate its own map
+     * @param m  The map that the node will recieve
+     */
     public void setMap(ArrayList<vNode> m)
     {
         map = m; 
     }
+    /*Method that deals with agent avoidence procedures within a node
+     * 
+     */
+    
     public void avoidance()
     {
         for (int i = 0; i < inhabitants.size(); i++) {
@@ -51,6 +62,9 @@ public abstract class vNode
 
         }
     }
+    /*Method that deals with the agent's change in apperance 
+     * 
+     */
     public void updateStage()
     {
         for (int a = 0; a < inhabitants.size(); a++) 
@@ -59,6 +73,9 @@ public abstract class vNode
             agent.increaseStage();
         }
     }
+    /*method that infects the agents
+     * 
+     */
     public void infected()
     {
         ArrayList<Agent> infected=new ArrayList<>();
@@ -98,7 +115,9 @@ public abstract class vNode
         
         }
     }
-    
+    /*Method that the node uses to generate a map
+     * 
+     */
     private ArrayList<vNode> generateMap()
     {
         boolean all = false; 
@@ -127,8 +146,11 @@ public abstract class vNode
         
         return map; 
     }
-   
-    public String readOut(){
+   /*Method to get the data from a node
+    * 
+    */
+    public String readOut()
+    {
         double infected=0.000;
         for (int i = 0; i < inhabitants.size(); i++) {
             Agent agent = inhabitants.get(i);
@@ -144,7 +166,9 @@ public abstract class vNode
         return name+" has "+inhabitants.size()+" inhabitants "+percent+"% infected "+infected;
     }
     
-    
+    /*Method that calls all of the update methods for the agents in the node
+     * 
+     */
     public void update()
     {
         for (int i = 0; i < inhabitants.size(); i++) {

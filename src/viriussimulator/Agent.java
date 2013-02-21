@@ -30,6 +30,10 @@ public class Agent extends AbstractAgent
 
     public vNode home;
     public boolean paniced=false;
+    /*Method that creates an agent
+     * @param n  The name of the agent
+     * @param start  The node they spawn at
+     */
     public Agent(String n, vNode start)
     {
         name = n; 
@@ -43,7 +47,9 @@ public class Agent extends AbstractAgent
         scheduleplace = 0; 
     }
    
-    
+   /*Agent update method.  Takes care of route finding and movement between nodes. 
+    * 
+    */ 
     public void update()
     {
         
@@ -105,7 +111,10 @@ public class Agent extends AbstractAgent
         
     }
     
-     
+    /*Method that deals with the agent moving from node to node
+     * @param v Destination node
+     * @return  True if the agent can reach the destination node
+     */ 
     public boolean changeLocation(vNode v)
     {
         
@@ -116,6 +125,9 @@ public class Agent extends AbstractAgent
         return location.inhabitantExits(this, v); 
     }
     
+    /*Method that generates the schedule 
+     * 
+     */
     protected ArrayList<vNode> generateSchedule()
     {
          
@@ -136,7 +148,9 @@ public class Agent extends AbstractAgent
     }
     
     
-    
+    /*Route finding algorithm
+     * @param v The destination node
+     */
     
     public ArrayList<vNode> findRoute(vNode v)
     {
@@ -187,12 +201,17 @@ public class Agent extends AbstractAgent
          
     }
     
+    /*Method that adds the virus to the agent
+     * @param vir  The virus to be added
+     */
+    
     public void infect(Virus vir)
     {
         infected=true;
         stage=1;
         virus=vir;
     }
+    
     public boolean isInfected()
     {
         return infected;
@@ -212,6 +231,10 @@ public class Agent extends AbstractAgent
     {
         return apearence;
     }
+    
+    /*Method to see if the agent is avoiding another agent
+     * @param person  The agent that might be avoided
+     */
     public boolean avoid(Agent person)
     {
         
@@ -221,6 +244,10 @@ public class Agent extends AbstractAgent
         
         return false;
     }
+    
+    /*Method that updates appearance
+     * 
+     */
     public void updateApperance(double avoidingPercent)
     {
         if (infected) 
@@ -228,6 +255,8 @@ public class Agent extends AbstractAgent
             apearence=virus.stageApperence(stage)-avoidingPercent;
         }
     }
+    
+    
     
     public boolean isDead()
     {

@@ -13,7 +13,7 @@ import java.util.Random;
  */
 public class ZombieCity extends City
 {
-
+    //Same as regular city, but with modifcations to make room for the zombie virus
     int numAgents; 
     public ZombieCity (int streets, int nAgents)
     {
