@@ -21,7 +21,28 @@ public class ZombieCity extends City
         numAgents = nAgents; 
         Random generator = new Random();
         System.out.println("Creating city");        
-        nodes = new ArrayList<vNode>();        
+        nodes = new ArrayList<vNode>();
+        nodes.add(new streetNode("route 1", 400));
+     nodes.add(new buildingNode("building 1", 500));
+     nodes.add(new buildingNode("building 2", 200));
+     nodes.add(new buildingNode("building 3", 600));
+     nodes.add(new buildingNode("building 4", 1000));
+     nodes.add(new buildingNode("building 5", 1000));
+     nodes.add(new buildingNode("building 6", 1000));
+     nodes.add(new buildingNode("building 7", 1000));
+     nodes.add(new buildingNode("building 8", 1000));
+     nodes.add(new buildingNode("building 9", 1000));
+     nodes.add(new buildingNode("building 10", 1000));
+     nodes.add(new buildingNode("building 11", 1000));
+     System.out.println("Adding connections"); 
+     for (int i = 1; i < nodes.size(); i++) 
+     {
+        nodes.get(0).addConnection(nodes.get(i));
+        nodes.get(i).addConnection(nodes.get(0)); 
+        //System.out.println("Number of connections is: " + nodes.get(i).connections.size()); 
+
+     }
+        /*
         nodes.add(new streetNode("Route 1", generator.nextInt(1000)));
         int streetnames = 0;
         for (int i = 0; i < streets; i++) 
@@ -32,7 +53,7 @@ public class ZombieCity extends City
             temp.get(0).addConnection(nodes.get(0));
             nodes.addAll(temp);
             System.out.println(nodes.size()+" node size");
-        }
+        }*/
         buildingNode start = new buildingNode("start point", 5000);
         
         Virus infection = new zombievirus();
@@ -129,13 +150,17 @@ public class ZombieCity extends City
     public void deadamount()
     {
         int dead=0;
-        int total=0;
+        double total=0.0;
+        int infected=0;
         for (int i = 0; i < nodes.size(); i++) 
         {
             vNode node = nodes.get(i);
             for (int j = 0; j < node.inhabitants.size(); j++) {
                 Agent agent = node.inhabitants.get(j);
                 total++;
+                if (agent.isInfected()) {
+                    infected++;
+                }
                 if (agent.stage >= 10) 
                 {
                     dead++;
@@ -144,7 +169,13 @@ public class ZombieCity extends City
             }
             
         }
+        System.out.println(infected+" people infected out of "+ total);
         System.out.println(dead+" people zombies out of " + total);
+        System.out.println(infected/total+" percent infected");
+        System.out.println(dead/total+" percent dead");
+        System.out.println((total-dead)/total+" percent living");
+        System.out.println((total-infected)/total+" percent clean");
+
     }
     
     
