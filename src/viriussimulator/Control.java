@@ -21,6 +21,8 @@ public class Control {
         //int num = generator.nextInt(2000); 
         //if (num ==0) num = 1; 
        // int num = 5000; 
+
+        int num = 2000; 
         //City city = new City(2,num); 
         //ZombieCity city = new ZombieCity(2, num);
         //for (int updates = 0; updates < 100; updates++)
